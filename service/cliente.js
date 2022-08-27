@@ -21,7 +21,7 @@ router.get("/cliente/new",(req,res) =>{
 });
 
 
-router.get("/cliente/save",(req,res) =>{
+router.post("/cliente/save",(req,res) =>{
     
 
     var cliente ={
