@@ -1,0 +1,50 @@
+<%-include('../partials/header.ejs')%> 
+
+<body>
+    <%-include('../partials/navbar2.ejs')%> 
+    <div class="container">
+        <div class="card-body" >
+            <form method="post" action="/cliente/save">
+                <div class="mb-3">
+                    <label class="form-label">Nome</label>
+                    <input type="text" name="nome" class="form-control">
+                </div> 
+                <div class="mb-3">
+                    <label class="form-label">CPF</label>
+                    <input type="text" name="cpf" class="form-control" placeholder="822.885.555-58" onkeypress="$(this).mask('000.000.000-00');">
+                </div>
+        
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email </label>
+                    <input type="email"  name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+        
+                <div class="mb-3">
+                    <label class="form-label">Telefone</label>
+                    <input type="text" name="telefone" class="form-control" placeholder="(85)91155-7852" onkeypress="$(this).mask('(00)0000-00000')" >
+                </div>
+            
+            
+                <label>Sexo</label>
+                
+                  <select name="sexo" class="form-control">
+                        <option value="<%=sexo.F%>" selected><%=sexo.F%></option>
+                        <option value="<%=sexo.M%>" ><%=sexo.M%></option>
+                  </select> <br>
+            
+                <div class="mb-3">
+                    <label class="form-label">Data de Nascimento</label>
+                    <input type="date" name="data_de_nascimento" class="form-control" >
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    
+    
+</body>
+
+<%-include ('../partials/footer.ejs')%> 
+

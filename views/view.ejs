@@ -1,0 +1,60 @@
+<%-include('../partials/header.ejs')%> 
+
+<body>
+    <%-include('../partials/navbar.ejs')%> 
+    <div class="container">
+        <br>
+        <h2>Clientes</h2>
+        <div style="text-align: right;">
+            <a class="btn btn-success" href="/cliente/new" >Criar novo Cliente</a> 
+        </div>
+        <br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">telefone</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+             <% clientes.forEach(cliente => { %> 
+                <tr>
+                    <th scope="row"><%=cliente.id %></th>
+                    <td><%=cliente.nome%></td>
+                    <td><%=cliente.cpf%></td>
+                    <td><%=cliente.telefone%></td>
+                    <td>
+                        <a href="/cliente/edit/<%=cliente.id%>"  class="btn btn-warning"> Editar </a>
+                        <form method="post" action="/cliente/delete" style="display: inline;" onsubmit="confirmarDelecao(event,this)">
+                            <input type="hidden" name="id" value="<%=cliente.id%>">
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                        
+                    </td>
+                </tr>
+              <% }); %> 
+             
+
+            </tbody>
+          </table>
+    </div>
+
+    
+    
+</body>
+
+<%-include ('../partials/footer.ejs')%> 
+
+<script>
+  function confirmarDelecao(event,form){
+     event.preventDefault();
+     var decision = confirm("Você quer deletar esse cliente?");
+     if(decision){
+        form.submit();
+     }
+  }
+</script>
+
